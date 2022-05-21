@@ -5,8 +5,8 @@ export class CreateGenreDto {
   @IsNumber()
   @IsPositive()
   @ApiProperty({
-    description: 'O número do gênero.',
-    example: 1,
+    description: 'O nome do gênero.',
+    example: 'Ação',
   })
-  number: number;
+  name: string;
 }
