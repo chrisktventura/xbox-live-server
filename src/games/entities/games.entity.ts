@@ -1,4 +1,6 @@
 export class Game {
   id: string;
-  number: number;
+  // title: string;
+  // description: string;
+  // favorite: boolean;
 }

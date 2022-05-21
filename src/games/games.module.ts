@@ -6,4 +6,6 @@ import { GamesController } from './games.controller';
   controllers: [GamesController],
   providers: [GamesService],
 })
-export class GamesModule {}
+export class GamesModule {
+  constructor(private readonly gameService: GamesService) {}
+}

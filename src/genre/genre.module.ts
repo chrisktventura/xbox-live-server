@@ -6,4 +6,6 @@ import { GenreService } from './genre.service';
   controllers: [GenreController],
   providers: [GenreService],
 })
-export class GenreModule {}
+export class GenreModule {
+  constructor(private readonly genreService: GenreService) {}
+}
