@@ -9,13 +9,7 @@ datasource db {
 
 model Game {
   id     String @id @default(uuid())
-  title String
-  coverImageUrl String
-  description String
-  year Int
-  rating Float
-  trailerYouTubeURL String
-  gamePlayURL String
+  name   String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
