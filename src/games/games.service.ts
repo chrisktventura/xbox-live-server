@@ -29,4 +29,7 @@ export class GamesService {
       data,
     });
   }
+  delete(id: string) {
+    this.prisma.game.delete({ where: { id } });
+  }
 }

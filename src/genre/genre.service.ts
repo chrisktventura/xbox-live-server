@@ -29,4 +29,7 @@ export class GenreService {
       data,
     });
   }
+  delete(id: string) {
+    this.prisma.genre.delete({ where: { id } });
+  }
 }
