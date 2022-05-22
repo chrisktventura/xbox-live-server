@@ -6,7 +6,7 @@ export class CreateGamesDto {
     description: 'O nome de um jogo',
     example: 'The Sims',
   })
-  title: string;
+  name: string;
 }
 //   @ApiProperty({
 //     description: 'Url da imagem do jogo',
