@@ -7,10 +7,15 @@ import { Game } from './entities/games.entity';
 export class GamesService {
   constructor(private readonly prisma: PrismaService) {}
 
-  findAll() {
+  findAll(): Promise<Game[]> {
     return this.prisma.game.findMany();
   }
-  create(dto: CreateGamesDto) {
+
+  findOne(id: string): Promise<Game> {
+    return this.prisma.game.findUnique({ where: { id } });
+  }
+
+  create(dto: CreateGamesDto): Promise<Game> {
     const data: Game = { ...dto };
 
     return this.prisma.game.create({ data });
