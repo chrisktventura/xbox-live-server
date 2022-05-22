@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateGenreDto } from './dto/create-genre.dto';
 import { UpdateGenreDto } from './dto/update-genre.dto';
@@ -11,17 +11,34 @@ export class GenreService {
   findAll(): Promise<Genre[]> {
     return this.prisma.genre.findMany();
   }
+  handleError(error: Error) {
+    console.log(error.message);
 
-  findOne(id: string): Promise<Genre> {
-    return this.prisma.genre.findUnique({ where: { id } });
+    return undefined;
+  }
+
+  async findById(id: string): Promise<Genre> {
+    const record = await this.prisma.genre.findUnique({ where: { id } });
+
+    if (!record) {
+      throw new NotFoundException(`Registro com o '${id}' não encontrado.`);
+    }
+
+    return record;
+  }
+
+  async findOne(id: string): Promise<Genre> {
+    return this.findById(id);
   }
 
   create(dto: CreateGenreDto): Promise<Genre> {
     const data: Genre = { ...dto };
 
-    return this.prisma.genre.create({ data });
+    return this.prisma.genre.create({ data }).catch(this.handleError);
   }
-  update(id: string, dto: UpdateGenreDto): Promise<Genre> {
+  async update(id: string, dto: UpdateGenreDto): Promise<Genre> {
+    await this.findById(id);
+
     const data: Partial<Genre> = { ...dto };
 
     return this.prisma.genre.update({
@@ -29,7 +46,9 @@ export class GenreService {
       data,
     });
   }
-  delete(id: string) {
-    this.prisma.genre.delete({ where: { id } });
+  async delete(id: string) {
+    await this.findById(id);
+
+    await this.prisma.genre.delete({ where: { id } });
   }
 }

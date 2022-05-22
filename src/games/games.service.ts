@@ -1,5 +1,5 @@
 import { PrismaService } from './../prisma/prisma.service';
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateGamesDto } from './dto/create-games.dto';
 import { UpdateGamesDto } from './dto/update-games.dto';
 import { Game } from './entities/games.entity';
@@ -12,16 +12,33 @@ export class GamesService {
     return this.prisma.game.findMany();
   }
 
-  findOne(id: string): Promise<Game> {
-    return this.prisma.game.findUnique({ where: { id } });
+  async findById(id: string): Promise<Game> {
+    const record = await this.prisma.game.findUnique({ where: { id } });
+
+    if (!record) {
+      throw new NotFoundException(`Registro com o '${id}' não encontrado.`);
+    }
+
+    return record;
   }
 
+  async findOne(id: string): Promise<Game> {
+    return this.findById(id);
+  }
+
+  handleError(error: Error) {
+    console.log(error.message);
+
+    return undefined;
+  }
   create(dto: CreateGamesDto): Promise<Game> {
     const data: Game = { ...dto };
 
-    return this.prisma.game.create({ data });
+    return this.prisma.game.create({ data }).catch(this.handleError);
   }
-  update(id: string, dto: UpdateGamesDto): Promise<Game> {
+  async update(id: string, dto: UpdateGamesDto): Promise<Game> {
+    await this.findById(id);
+
     const data: Partial<Game> = { ...dto };
 
     return this.prisma.game.update({
@@ -29,7 +46,9 @@ export class GamesService {
       data,
     });
   }
-  delete(id: string) {
-    this.prisma.game.delete({ where: { id } });
+  async delete(id: string) {
+    await this.findById(id);
+
+    await this.prisma.genre.delete({ where: { id } });
   }
 }
