@@ -14,11 +14,6 @@ async function bootstrap() {
       'Aplicação para gestão de contas, usuarios e games Xbox Live',
     )
     .setVersion('1.0.0')
-    .addTag('Status')
-    .addTag('games')
-    .addTag('genres')
-    .addTag('profiles')
-    .addTag('users')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
