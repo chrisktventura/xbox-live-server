@@ -1,28 +1,33 @@
 // import { IsNumber, IsPositive } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNumber, IsUrl } from 'class-validator';
+import { IsNumber, IsString, IsUrl } from 'class-validator';
 
 export class CreateGamesDto {
+  @IsString()
   @ApiProperty({
     description: 'O nome de um jogo',
     example: 'The Sims',
   })
   title: string;
 
+  @IsString()
   @ApiProperty({
     description: 'Url da imagem do jogo',
   })
   coverImageUrl: string;
 
+  @IsString()
   @ApiProperty({
     description: 'Descrição do jogo',
   })
   description: string;
 
+  @IsNumber()
   @ApiProperty({
     description: 'Ano de lançamento do jogo',
   })
   year: number;
+
   @IsNumber()
   @ApiProperty({
     description: 'Classificação no IMDB (0 a 5)',
