@@ -44,7 +44,7 @@ model User {
   name     String
   email    String  @unique
   password String
-  cpf      String  @unique
+  cpf      Int     @unique
   isAdmin  Boolean
 
   @@map("user")
