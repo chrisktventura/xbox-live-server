@@ -6,7 +6,7 @@ export class CreateGamesDto {
     description: 'O nome de um jogo',
     example: 'The Sims',
   })
-  name: string;
+  title: string;
 
   @ApiProperty({
     description: 'Url da imagem do jogo',
@@ -21,7 +21,7 @@ export class CreateGamesDto {
   @ApiProperty({
     description: 'Ano de lançamento do jogo',
   })
-  year: Date;
+  year: number;
 
   @ApiProperty({
     description: 'Classificação no IMDB (0 a 5)',
