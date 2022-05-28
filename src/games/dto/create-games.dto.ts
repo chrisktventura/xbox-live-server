@@ -7,34 +7,34 @@ export class CreateGamesDto {
     example: 'The Sims',
   })
   name: string;
+
+  @ApiProperty({
+    description: 'Url da imagem do jogo',
+  })
+  coverImageUrl: string;
+
+  @ApiProperty({
+    description: 'Descrição do jogo',
+  })
+  description: string;
+
+  @ApiProperty({
+    description: 'Ano de lançamento do jogo',
+  })
+  year: Date;
+
+  @ApiProperty({
+    description: 'Classificação no IMDB (0 a 5)',
+  })
+  imdbScore: number;
+
+  @ApiProperty({
+    description: 'Url do trailer do jogo',
+  })
+  urlTrailerYT: string;
+
+  @ApiProperty({
+    description: 'Url da gameplay do jogo',
+  })
+  urlGameplayYT: string;
 }
-//   @ApiProperty({
-//     description: 'Url da imagem do jogo',
-//   })
-//   coverImageUrl: string;
-
-//   @ApiProperty({
-//     description: 'Descrição do jogo',
-//   })
-//   description: string;
-
-//   @ApiProperty({
-//     description: 'Ano de lançamento do jogo',
-//   })
-//   year: Date;
-
-//   @ApiProperty({
-//     description: 'Classificação no IMDB (0 a 5)',
-//   })
-//   imdbScore: number;
-
-//   @ApiProperty({
-//     description: 'Url do trailer do jogo',
-//   })
-//   trailerYouTubeUrl: string;
-
-//   @ApiProperty({
-//     description: 'Url da gameplay do jogo',
-//   })
-//   gameplayYouTubeUrl: string;
-// }
