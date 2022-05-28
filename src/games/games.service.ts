@@ -32,7 +32,7 @@ export class GamesService {
     return undefined;
   }
   create(dto: CreateGamesDto): Promise<Game> {
-    const data: Game = { ...dto };
+    const data = { ...dto };
 
     return this.prisma.game.create({ data }).catch(this.handleError);
   }

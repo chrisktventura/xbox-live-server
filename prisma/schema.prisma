@@ -10,7 +10,7 @@ datasource db {
 model Game {
   id            String @id @default(uuid())
   title         String
-  coverImageUrl   String
+  coverImageUrl String
   description   String
   year          Int
   imdbScore     Float
@@ -29,16 +29,23 @@ model Genre {
 }
 
 model Profile {
-  id   String @id @default(uuid())
-  name String
-  imagemUrl String
+  id    String @id @default(uuid())
+  name  String
+  image String
+
+  // updateAt DateTime @updatedAt @map("updated_at")
+  // createAt DateTime @default(now()) @map("created_at")
+
+  @@map("profile")
 }
 
 model User {
-  id   String @id @default(uuid())
-  name String
-  email String @unique
+  id       String  @id @default(uuid())
+  name     String
+  email    String  @unique
   password String
-  cpf String @unique
-  isAdmin Boolean
+  cpf      String  @unique
+  isAdmin  Boolean
+
+  @@map("user")
 }
