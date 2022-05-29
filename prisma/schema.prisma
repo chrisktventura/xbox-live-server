@@ -30,7 +30,7 @@ model Genre {
   id     String  @id @default(uuid())
   name   String  @unique
   games   Game[]
-  gameId String?
+  gameId String  @map("game_id")
 }
 
 model Profile {
