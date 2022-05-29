@@ -1,3 +1,4 @@
+import { Genre } from './../../genre/entities/genre.entity';
 export class Game {
   id?: string;
   title: string;
@@ -9,4 +10,6 @@ export class Game {
   urlGameplayYT: string;
   updateAt?: Date;
   createdAt?: Date;
+
+  genres?: Genre[];
 }

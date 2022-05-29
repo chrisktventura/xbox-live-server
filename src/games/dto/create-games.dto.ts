@@ -45,4 +45,5 @@ export class CreateGamesDto {
     description: 'Url da gameplay do jogo',
   })
   urlGameplayYT: string;
+  genreName: string;
 }

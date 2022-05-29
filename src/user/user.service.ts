@@ -6,6 +6,7 @@ import {
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { handleError } from 'src/utils/handle-error.util';
 import { User } from './entities/user.entity';
 import * as bcrypt from 'bcrypt';
 
@@ -44,11 +45,7 @@ export class UserService {
   async findOne(id: string): Promise<User> {
     return this.findById(id);
   }
-  handleError(error: Error) {
-    console.log(error.message);
 
-    return undefined;
-  }
   async create(dto: CreateUserDto): Promise<User> {
     if (dto.password != dto.confirmPassword) {
       throw new BadRequestException('As senhas informadas são diferentes');
@@ -65,7 +62,7 @@ export class UserService {
         data: user,
         select: this.userSelect,
       })
-      .catch(this.handleError);
+      .catch(handleError);
   }
 
   async update(id: string, dto: UpdateUserDto): Promise<User> {
@@ -89,7 +86,7 @@ export class UserService {
         data,
         select: this.userSelect,
       })
-      .catch(this.handleError);
+      .catch(handleError);
   }
   async delete(id: string) {
     await this.findById(id);
