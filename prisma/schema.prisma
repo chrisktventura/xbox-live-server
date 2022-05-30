@@ -27,10 +27,10 @@ model Game {
 }
 
 model Genre {
-  id     String  @id @default(uuid())
-  name   String  @unique
-  games   Game[]
-  gameId String  @map("game_id")
+  id     String @id @default(uuid())
+  name   String @unique
+  games  Game[]
+  gameId String @map("game_id")
 }
 
 model Profile {
@@ -49,7 +49,7 @@ model Profile {
 
 model User {
   id       String  @id @default(uuid())
-  name     String
+  nickname String
   email    String  @unique
   password String
   cpf      Int     @unique
