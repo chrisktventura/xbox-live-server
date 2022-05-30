@@ -8,8 +8,10 @@ import {
   Param,
   Patch,
   Post,
+  UseGuards,
 } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from '@nestjs/passport';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
@@ -24,6 +26,8 @@ export class UserController {
   @ApiOperation({
     summary: 'Listar todas as mesas',
   })
+  @UseGuards(AuthGuard())
+  @ApiBearerAuth()
   findAll(): Promise<User[]> {
     return this.userService.findAll();
   }
@@ -32,6 +36,8 @@ export class UserController {
   @ApiOperation({
     summary: 'Visualizar uma mesa',
   })
+  @UseGuards(AuthGuard())
+  @ApiBearerAuth()
   findOne(@Param('id') id: string): Promise<User> {
     return this.userService.findOne(id);
   }
@@ -47,6 +53,8 @@ export class UserController {
   @ApiOperation({
     summary: 'Editar uma mesa pelo ID',
   })
+  @UseGuards(AuthGuard())
+  @ApiBearerAuth()
   update(@Param('id') id: string, @Body() dto: UpdateUserDto): Promise<User> {
     return this.userService.update(id, dto);
   }
@@ -55,6 +63,8 @@ export class UserController {
   @ApiOperation({
     summary: 'Remover uma mesa pelo ID',
   })
+  @UseGuards(AuthGuard())
+  @ApiBearerAuth()
   delete(@Param('id') id: string) {
     this.userService.delete(id);
   }
