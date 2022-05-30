@@ -18,8 +18,6 @@ import { Profile } from './entities/profile.entity';
 import { ProfileService } from './profile.service';
 
 @ApiTags('profile')
-@UseGuards(AuthGuard())
-@ApiBearerAuth()
 @Controller('profile')
 export class ProfileController {
   constructor(private readonly profileService: ProfileService) {}
