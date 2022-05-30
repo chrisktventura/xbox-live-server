@@ -1,4 +1,3 @@
-// import { IsNumber, IsPositive } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNumber, IsString, IsUrl } from 'class-validator';
 
