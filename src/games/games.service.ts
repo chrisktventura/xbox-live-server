@@ -17,11 +17,17 @@ export class GamesService {
       },
     });
   }
-  async findById(id: string): Promise<Game> {
-    const record = await this.prisma.game.findUnique({ where: { id } });
-
+  async findById(id: string) {
+    const record = await this.prisma.game.findUnique({
+      where: {
+        id: id,
+      },
+      include: {
+        genres: true,
+      },
+    });
     if (!record) {
-      throw new NotFoundException(`Registro com o '${id}' não encontrado.`);
+      throw new NotFoundException(`Registro com o ID '${id}' não encontrado`);
     }
     return record;
   }
@@ -48,7 +54,7 @@ export class GamesService {
     return await this.prisma.game
       .create({
         data,
-        select: {
+        include: {
           genres: true,
         },
       })

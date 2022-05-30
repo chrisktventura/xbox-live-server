@@ -14,7 +14,7 @@ import * as bcrypt from 'bcrypt';
 export class UserService {
   private userSelect = {
     id: true,
-    name: true,
+    nickname: true,
     email: true,
     password: false,
     cpf: false,

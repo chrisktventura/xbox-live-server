@@ -48,5 +48,5 @@ export class CreateUserDto {
     example: 'yes(true) or no(false)',
   })
   isAdmin: boolean;
-  confirmPassword: any;
+  confirmPassword: string;
 }
