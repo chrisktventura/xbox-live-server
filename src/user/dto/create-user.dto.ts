@@ -35,10 +35,10 @@ export class CreateUserDto {
   password: string;
 
   @IsNumber()
-  @Matches(/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/)
+  // @Matches(/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/)
   @ApiProperty({
     description: 'o numero do cpf',
-    example: '123.456.789-01',
+    example: '12345678901',
   })
   cpf: number;
 
