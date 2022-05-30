@@ -24,7 +24,7 @@ export class UserController {
 
   @Get()
   @ApiOperation({
-    summary: 'Listar todas as mesas',
+    summary: 'Listar todos os Usuários',
   })
   @UseGuards(AuthGuard())
   @ApiBearerAuth()
@@ -34,7 +34,7 @@ export class UserController {
 
   @Get(':id')
   @ApiOperation({
-    summary: 'Visualizar uma mesa',
+    summary: 'Visualizar um Usuario pelo ID',
   })
   @UseGuards(AuthGuard())
   @ApiBearerAuth()
@@ -44,14 +44,14 @@ export class UserController {
 
   @Post()
   @ApiOperation({
-    summary: 'Criar uma mesa',
+    summary: 'Criar um Usuario',
   })
   create(@Body() dto: CreateUserDto): Promise<User> {
     return this.userService.create(dto);
   }
   @Patch(':id')
   @ApiOperation({
-    summary: 'Editar uma mesa pelo ID',
+    summary: 'Editar um Usuario pelo ID',
   })
   @UseGuards(AuthGuard())
   @ApiBearerAuth()
@@ -61,7 +61,7 @@ export class UserController {
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
   @ApiOperation({
-    summary: 'Remover uma mesa pelo ID',
+    summary: 'Remover um Usuario pelo ID',
   })
   @UseGuards(AuthGuard())
   @ApiBearerAuth()
