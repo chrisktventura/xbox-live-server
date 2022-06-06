@@ -8,6 +8,7 @@ import { UserModule } from './user/user.module';
 import { ProfileModule } from './profile/profile.module';
 import { AuthModule } from './auth/auth.module';
 import { FavoritosModule } from './favoritos/favoritos.module';
+import { HomepageModule } from './homepage/homepage.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { FavoritosModule } from './favoritos/favoritos.module';
     ProfileModule,
     AuthModule,
     FavoritosModule,
+    HomepageModule,
   ],
   controllers: [AppController],
   providers: [AppService],
