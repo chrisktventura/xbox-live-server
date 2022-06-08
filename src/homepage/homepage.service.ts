@@ -30,6 +30,14 @@ export class HomepageService {
             },
           },
         },
+        favoritos: {
+          select: {
+            game: true,
+            gameId: true,
+            profile: true,
+            profileId: true,
+          },
+        },
       },
     });
 
