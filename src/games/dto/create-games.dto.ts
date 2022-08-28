@@ -44,5 +44,10 @@ export class CreateGamesDto {
     description: 'Url da gameplay do jogo',
   })
   urlGameplayYT: string;
+
+  @ApiProperty({
+    description: 'Gênero do jogo',
+    example: 'Simulação',
+  })
   genreName: string;
 }
